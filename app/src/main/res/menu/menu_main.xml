@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kulomady.strukturdata.view.MainActivity">
+
+    <item android:id="@+id/file"
+        android:title="@string/action_sorting"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_sort_by_size">
+        <!-- "file" submenu -->
+        <menu>
+            <item android:id="@+id/action_sort_by_employee_id"
+                android:title="@string/sort_by_employee_id" />
+            <item android:id="@+id/action_sort_by_employee_name"
+                android:title="@string/sortby_employee_name" />
+            <item android:id="@+id/action_sort_by_department_name"
+                android:title="@string/sortby_department_name" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_clear_Data"
+        android:orderInCategory="100"
+        android:title="@string/action_clear_all"
+        app:showAsAction="never" />
+</menu>

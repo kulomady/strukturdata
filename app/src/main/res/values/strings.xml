@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">StrukturData</string>
+    <string name="action_settings">Settings</string>
+    <string name="permission_request"><![CDATA[Aplikasi ini membutuhkan akses membaca & menulis ke folder download]]></string>
+    <string name="ok">Ok</string>
+    <string name="change_setting">Change Setting</string>
+    <string name="action_sorting">Sorting</string>
+    <string name="sortby_employee_name">Employee Name</string>
+    <string name="sortby_department_name">Department Name</string>
+    <string name="sort_by_employee_id">Employee Id</string>
+    <string name="action_clear_all">Clear All Data</string>
+</resources>
