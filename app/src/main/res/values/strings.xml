@@ -9,4 +9,5 @@
     <string name="sortby_department_name">Department Name</string>
     <string name="sort_by_employee_id">Employee Id</string>
     <string name="action_clear_all">Clear All Data</string>
+    <string name="add_department">Add Department</string>
 </resources>

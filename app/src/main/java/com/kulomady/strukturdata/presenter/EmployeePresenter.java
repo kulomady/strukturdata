@@ -3,6 +3,7 @@ package com.kulomady.strukturdata.presenter;
 import com.kulomady.strukturdata.model.DataPersistent;
 import com.kulomady.strukturdata.model.Department;
 import com.kulomady.strukturdata.model.Employee;
+import com.kulomady.strukturdata.view.listEmployess.EmployeeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +19,61 @@ public class EmployeePresenter {
     }
 
     private List<Department> departments = new ArrayList<>();
+    private EmployeeView view;
     private List<Employee> employees = new ArrayList<>();
 
-    public EmployeePresenter(DataPersistent dataPersistent) {
+    public EmployeePresenter(DataPersistent dataPersistent, EmployeeView view) {
+
         employees = dataPersistent.readEmployeeFromCsv();
         departments = dataPersistent.readDepartmentFromCsv();
+        this.view = view;
     }
 
     public List<Employee> getEmployeeWithDepartmentName() {
         List<Employee> result = new ArrayList<>();
         for (int i = 0; i < employees.size(); i++) {
-            Employee employee = employees.get(i);
-            employee.setDepartmentId(getDepartmentNameById(employee.getDepartmentId()));
+            Employee tempEmployee = employees.get(i);
+            Employee employee = new Employee(
+                    tempEmployee.getId(),
+                    getDepartmentNameById(tempEmployee.getDepartmentId()),
+                    tempEmployee.getName(),
+                    tempEmployee.getAlamat()
+            );
+
             result.add(employee);
         }
         return result;
+    }
+
+    public void loadEmployeesWithDepartmentName() {
+        view.showEmployess(getEmployeeWithDepartmentName());
+    }
+
+    public void loadEmployessSortByEmployeeId(){
+        view.showSortResult(
+                bubbleSortEmployee(
+                        getEmployeeWithDepartmentName(),
+                        SortBy.EMPLOYEE_ID
+                )
+        );
+    }
+
+    public void loadEmployessSortByEmployeeName(){
+        view.showSortResult(
+                bubbleSortEmployee(
+                        getEmployeeWithDepartmentName(),
+                        EmployeePresenter.SortBy.EMPLOYEE_NAME
+                )
+        );
+    }
+
+    public void loadEmployessSortByDepartmentName(){
+        view.showSortResult(
+                bubbleSortEmployee(
+                        getEmployeeWithDepartmentName(),
+                        SortBy.DEPARTMENT_NAME
+                )
+        );
     }
 
     public List<Employee> bubbleSortEmployee(List<Employee> list, SortBy sortBy) {

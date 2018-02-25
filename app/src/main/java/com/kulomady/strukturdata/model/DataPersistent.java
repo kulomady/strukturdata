@@ -82,7 +82,7 @@ public class DataPersistent {
                     employee.getId(),
                     employee.getDepartmentId(),
                     employee.getName(),
-                    employee.getDepartmentId()
+                    employee.getAlamat()
             };
             FileWriter mFileWriter = new FileWriter(employeeCsvFile, true);
             CSVWriter writer = new CSVWriter(mFileWriter);
